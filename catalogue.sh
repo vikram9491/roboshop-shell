@@ -30,13 +30,13 @@ cd /app
 echo -e "\e[36m>>>>>>>>>>>>  Download NodeJS Dependencies  <<<<<<<<<<<<\e[0m"
 npm install &>>/tmp/roboshop.log
 
-echo -e "\e[36m>>>>>>>>>>>>  INstall Mongo Client  <<<<<<<<<<<<\e[0m"
+echo -e "\e[36m>>>>>>>>>>>>  INstall Mongo Client  <<<<<<<<<<<<\e[0m"  | tee -a /tmp/test
 yum install mongodb-org-shell -y &>>/tmp/roboshop.log
 
-echo -e "\e[36m>>>>>>>>>>>>  Load Catalogue Schema  <<<<<<<<<<<<\e[0m"
+echo -e "\e[36m>>>>>>>>>>>>  Load Catalogue Schema  <<<<<<<<<<<<\e[0m"  | tee -a /tmp/test
 mongo --host mongodb.rdevopsb72.online </app/schema/catalogue.js &>>/tmp/roboshop.log
 
-echo -e "\e[36m>>>>>>>>>>>>  Start Catalogue Service  <<<<<<<<<<<<\e[0m"
+echo -e "\e[36m>>>>>>>>>>>>  Start Catalogue Service  <<<<<<<<<<<<\e[0m"  | tee -a /tmp/test
 systemctl daemon-reload &>>/tmp/roboshop.log
 systemctl enable catalogue &>>/tmp/roboshop.log
 systemctl restart catalogue &>>/tmp/roboshop.log
